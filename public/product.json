@@ -1,0 +1,45 @@
+{
+    "visal":{
+        "name":"visal",
+        "address":{
+            "Country":"India",
+            "State":"Odisha",
+            "pin":"7600010"
+        },
+        "age":25,
+        "Contact":"8867727394",
+        "productdetails":[
+            {"prductname":"dali",
+             "prdcutId" : "17736GTHT",
+             "productImage":"url",
+             "productPrice": "99898"
+            },
+            {"prductname":"dali",
+                "prdcutId" : "17736GTHT"
+            }
+        ]
+    },
+    "visal1994":{
+        "name":"kumar",
+        "address":{
+            "Country":"India",
+            "State":"Odisha",
+            "pin":"7600010"
+        },
+        "age":26,
+        "Contact":"7978280595",
+        "productdetails":[
+            {"prductname":"dsafsd",
+             "prdcutId" : "17736GTHT",
+             "productImage":"url",
+             "productPrice": "99898"
+            },
+            {"prductname":"dadfafsdli",
+                "prdcutId" : "17736GTHT",
+                "productImage":"url",
+             "productPrice": "8847874"
+            }
+        ]
+    }
+
+}
