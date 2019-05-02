@@ -33,11 +33,11 @@ export const userDetailsFetch = (isLoggedIn,username) =>{
             username: username,
             isLoggedIn: isLoggedIn
         };
-        
+        console.log("user json input UserDetailsFetch");
         console.log(inputData);
                 axios.get('product.json').then(response =>{
                         console.log(response);
-                        dispatch(userDetailsFetchSuccess(response))
+                        dispatch(userDetailsFetchSuccess(response.data))
                 }).catch(err=>{
                     console.log(err);
                     dispatch(userDetailsFetchFail(err));

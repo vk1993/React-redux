@@ -7,9 +7,9 @@ class About extends Component {
    
     componentDidMount(){
         this.props.onFetchUserData(this.props.isLoggedIn,this.props.username);
-        console.log("fhhdfhfhfh");
+        console.log('about jsx')
         console.log(this.props);
-        console.log("afterteft");
+       
     }
 
    
@@ -20,6 +20,8 @@ class About extends Component {
     }
 }
 const mapStateToProps = state =>{
+    console.log("inside mapStateToProps of Aboutjsx")
+    console.log(state)
     return {
         userDetails: state.userDetailsFetch.userDetails,
         username : state.auth.username,

@@ -17,6 +17,7 @@ export const authStart = () => {
 //     };
 // };
 export const authSuccess = (authData) => {
+    console.log("inside authSuccess action")
     console.log(authData);
         return {
             type: actionTypes.AUTH_SUCCESS,
@@ -25,6 +26,7 @@ export const authSuccess = (authData) => {
     };
     
 export const authFail = (error) => {
+    console.log("inside authFail action")
    console.log(error)
     return {
         type: actionTypes.AUTH_FAIL,
@@ -44,15 +46,17 @@ export const auth = (username, password) => {
         const authData = {
             username: username,
             password: password,
-            isLoggedIn: false
+            isLoggedIn: true
         };
         
         axios.get('users.json').then(response=>{
             response.data.map(data =>{
-                if(data.username == authData.username && data.password === authData.password){
+                if(data.username === authData.username && data.password === authData.password){
+                    console.log("authaction");
                     dispatch(authSuccess(authData));
-                }else{
-                    dispatch(authFail("data wroung"));
+                }
+                if(data.username != authData.username && data.password != authData.password){
+                    dispatch(authFail("error data wroung "));
                 }
             })
         }).catch((err)=>{

@@ -14,16 +14,19 @@ import {
     DropdownItem } from 'reactstrap';
 import Login from './Login';
 import About from './about';
+
+import { connect } from 'react-redux';
+import  * as actions from '../store/actions/index';
   
 
-export default class Header extends Component{
+class Header extends Component{
     constructor(props){
         super(props)
         this.state={
             update: false,
             cart:"",
             isOpen: false,
-            isLogin: false,
+            isLoggedIn:false
         };
         this.toggle = this.toggle.bind(this);
     }
@@ -36,8 +39,8 @@ export default class Header extends Component{
 
     render(){
         return(
-            <div>
-                 <Router>
+            
+                 <div>
             <Navbar color="light" light expand="md">
               <NavbarBrand href="/">Pay--$--later</NavbarBrand>
               <NavbarToggler onClick={this.toggle} />
@@ -57,7 +60,7 @@ export default class Header extends Component{
                     <Link to={"/about"} className='nav-link'>About</Link>
                   </NavItem>
                   <NavItem>
-                    {this.state.isLogin ? <NavLink to={"/"}>SignOUT</NavLink> : 
+                    {this.props.isLoggedIn ? <NavLink to={"/"}>SignOUT</NavLink> : 
                     <Link to={"/login"} className='nav-link' >SingIn</Link>}
                   </NavItem>
                   
@@ -87,8 +90,20 @@ export default class Header extends Component{
             <Route path='/books' component={Login} />
             <Route path='/about' component={About} />
                </Switch>
-               </Router>
-          </div>
+               </div>
+          
         )
     }
 }
+
+const mapStateToProps = state =>{
+  console.log("inside mapStateToProps of Header")
+  console.log(state) ;// state
+  return{
+    isLoggedIn : state.auth.isLoggedIn,
+    username: state.auth.username
+  }
+}
+
+
+export default connect(mapStateToProps,null)(Header);

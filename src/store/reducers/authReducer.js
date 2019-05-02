@@ -13,12 +13,12 @@ const authStart = ( state, action ) => {
 };
 
 const authSuccess = (state, action) => {
+  console.log("inside the auth action")
   console.log(action)
   return updateObject( state, { 
    username: action.username,
    error:null,
-   isLoggedIn: true,
-   loading : false    
+   isLoggedIn: action.isLoggedIn    
    } );
 };
 
@@ -33,8 +33,7 @@ const authlogOut = (state,action) =>{
   return updateObject( state,{
     username: null,
     error:null,
-    isLoggedIn: false,
-    loading : false
+    isLoggedIn: false
   })
 }
 

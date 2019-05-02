@@ -8,7 +8,6 @@ import  * as actions from '../store/actions/index';
  class Login extends Component {
    
     constructor(props){
-      console.log(props)
         super(props)
         this.state ={
                 username:"",
@@ -32,6 +31,7 @@ import  * as actions from '../store/actions/index';
       handleSubmit = event => {
         event.preventDefault();
         this.props.onAuth(this.state.username,this.state.password);
+        this.props.history.push('/about');
       }
 
     render(){
@@ -83,8 +83,11 @@ const mapDispatchToProps = dispatch =>{
   };
 };
 
-
-// const mapStateToProps = state =>{
-
-// }
-export default connect(null,mapDispatchToProps)(Login);
+const mapStateToProps = state =>{
+  console.log("inside mapStateToProps of Login")
+  console.log(state) ;// state
+  return{
+    username : state.auth.username,
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

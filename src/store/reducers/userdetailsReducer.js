@@ -3,8 +3,8 @@ import { updateObject } from '../utility';
 
 const initialState = {
     userDetails: null,
-    isLoggedIn: false,
-    loading: false
+    loading: false,
+    error:null
 };
 
 const fetchStart = ( state, action ) => {
@@ -23,8 +23,7 @@ const fetchSuccess = (state, action) => {
   
 const fetchFail = (state, action) => {
     return updateObject( state, {
-        error: action.error,
-        isLoggedIn: false,
+        error: action.error
     });
   }
   
